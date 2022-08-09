@@ -1,0 +1,31 @@
+subjects
+=========
+
+
+- [X] synthetic data generated using video games with full world (e.g. GTA, driving games)
+- [ ] enviromnet data rendering for real-world drone & vision AI
+- [ ] Procedurally Generated Graphics and Geometry Nodes
+- [ ] Online Learning Reinforcement Learning & other specific interactivity apps
+
+
+checklist wiki RD
+=========
+
+- [ ] De ce este relevant proiectul? 
+        (de ce este relevant domeniul proiectului, ce creșteri sau evoluții determină rezolvarea proiectului)
+- [ ] Ce neajunsuri există (pe care proiectul le va rezolva)? 
+         (Ce aspecte din domeniul proiectului nu există implementate/dezvoltate? Ce aspecte sunt rezolvate ineficient sau neoptim? Ce aspecte merită îmbunătățite?)
+- [ ] De ce alte proiecte nu le rezolvă? 
+          (Ce alte proiecte/abordări/idei sunt dezvoltate? Ce rezolvă fiecare? Ce nu rezolvă și își va propune proiectul curent să rezolve?)
+- [ ] De ce sunt relevante neajunsurile/problemele? 
+            (Cum va fi soluționarea lor utilă utilizatorilor? Care vor fi beneficiarii acestei soluții? Cum le va face viața mai bună?)
+- [ ] Ce soluție propui? 
+             (Ce propui cu adevărat? Ce abordare/idei propui? - Nu detalierea utilitarelor și a tehnologiilor e importantă, ci abordarea si ideea propusă de autor.)
+- [ ] Ce obții în final? 
+              (Care sunt obiectivele proiectului/soluției/abordării/ideii? Care vor fi rezultatele sale (palpabile sau teoretice)? Ce va exista în final ce până acum nu există?)
+- [ ] De ce este soluția propusă
+              (cea) mai bună? (De ce altă abordare/idee nu ar fi mai potrivită?)
+- [ ] Ce diferențiatori are soluția 
+             (față de alte soluții comparabile sau cercetări anterioare - open source sau proprietare)? (Cum te compari cu alte soluții? Dacă alte soluții/abordări rezovlă aceeași problemă cum te compari cu ele, ce aduci în plus? Dacă nu există soluții pentru problema curentă, insistă pe problemă și pe faptul că doar tu o soluționezi în modul pe care-l consideri cel mai potrivit.)
+- [ ] Ce cazuri de utilizare sunt avantajoase pentru soluție? 
+              (Care sunt scenariile de utilizare în care soluția este relevantă și este folosibilă? De ce în aceste scenarii soluția propusă este superioară altora? - scenariile sunt o întărire a diferențiatorilor)
