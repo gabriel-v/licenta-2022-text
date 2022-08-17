@@ -1,11 +1,46 @@
-subjects
-=========
 
+
+outline tables & diagrams
+===================
+- [ ] Table 1: related work: render engine, procedural?, use OSM/Sat?, Video Game Map?, online learning?, Open Source engine+framework?
+- [ ] Table 2: intro theme question, justification, literary reference:
+   - why procedurally generated for machine learning? (variation, endless combinations, etc)
+   - how what is a realistic image?
+   - what classes of types imagery are needed? what classes for semantic segmentations are needed?
+   - why open source technology and user-customizations are needed?
+   - why is on-line learning needed instead of offline learning from dataset
+   - what is domain transfer and why it's a problem 
+- [ ] Fig 1: data pipeline (OSM + sat + models + geometry --> various object classes)
+- [ ] Fig 2: renderer/simulator main loop
+- [ ] Fig 3: environment creation
+- [ ] Fig 4: satellites + LOD
+- [ ] Fig 5: OSM paths for Roads, trains
+- [ ] Fig 6: railroad details creation GEOMETRY + result
+- [ ] Fig 7: road texturing, marking proximity
+- [ ] Fig 8: vegetation baking and instantiation
+- [ ] Fig 9: street power line, train signs
+- [ ] Fig 10: demo style transfer using SinGAN
+- [ ] Table 3: run times for each per-computed component in the model
+- [ ] Table 4: run times per frame different resolutions, on CPU and/or nvidia
+- [ ] Fig 11: Further Work example procedural trees + vegetation
+- [ ] Fig 12: Further Work example geometric building generation
+- [ ] Fig 13: Further Work example Web UI Mock-up, architecture, public model database, sat tiles database, public geometry nodes database, blender plugin, etc.
+- [ ] Table 5: Future Work 1 year Action Sheet (issue, person, resources required, Cost, Timeframe (short 1-3mo, medium 3-6mo, long 6-12mo)
+- [ ] Table Appendix: models source, name, url, license
+- [ ] Code Appendix: Online/RL/Interactive API
+- [ ] Code Appendix: Export/Import Geometry Nodes
+- [ ] Code Appendix: Downloading G StreetMap pics and training SinGAN model
+- [ ] Screenshot Appendix: manually download Maps and GIS for demo
+
+
+background - subjects
+==========
 
 - [X] synthetic data generated using video games with full world (e.g. GTA, driving games)
 - [ ] enviromnet data rendering for real-world drone & vision AI
 - [ ] Procedurally Generated Graphics and Geometry Nodes
 - [ ] Online Learning Reinforcement Learning & other specific interactivity apps
+
 
 
 checklist wiki RD
