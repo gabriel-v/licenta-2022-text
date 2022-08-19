@@ -10,9 +10,9 @@ outline tables & diagrams
    - why open source technology and user-customizations are needed?
    - why is on-line learning needed instead of offline learning from dataset
    - what is domain transfer and why it's a problem 
-- [ ] Fig 1: data pipeline (OSM + sat + models + geometry --> various object classes)
-- [ ] Fig 2: renderer/simulator main loop
-- [ ] Fig 3: environment creation
+- [x] Fig 1: data pipeline (OSM + sat + models + geometry --> various object classes)
+- [x] Fig 2: renderer/simulator main loop
+- [x] Fig 3: environment creation
 - [ ] Fig 4: satellites + LOD
 - [ ] Fig 5: OSM paths for Roads, trains
 - [ ] Fig 6: railroad details creation GEOMETRY + result
@@ -31,7 +31,7 @@ outline tables & diagrams
 - [ ] Code Appendix: Export/Import Geometry Nodes
 - [ ] Code Appendix: Downloading G StreetMap pics and training SinGAN model
 - [ ] Screenshot Appendix: manually download Maps and GIS for demo
-
+- [ ] Demo Video Appendix
 
 background - subjects
 ==========
