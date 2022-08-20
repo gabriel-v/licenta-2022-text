@@ -13,7 +13,7 @@ outline tables & diagrams
 - [x] Fig 1: data pipeline (OSM + sat + models + geometry --> various object classes)
 - [x] Fig 2: renderer/simulator main loop
 - [x] Fig 3: environment creation
-- [ ] Fig 4: satellites + LOD
+- [x] Fig 4: satellites + LOD
 - [ ] Fig 5: OSM paths for Roads, trains
 - [ ] Fig 6: railroad details creation GEOMETRY + result
 - [ ] Fig 7: road texturing, marking proximity

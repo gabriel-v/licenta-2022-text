@@ -30,7 +30,7 @@
 \setlength{\headsep}{0.50cm}
 
 \usepackage{parskip}
-
+\usepackage{float}
 % package for variable line spacing (1, 1.5, 2)
 % usage: write \onehalfspacing before the part which should be 
 % with 1.5 line spacing
