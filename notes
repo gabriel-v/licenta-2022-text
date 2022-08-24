@@ -4,9 +4,9 @@ outline tables & diagrams
 ===================
 - [ ] Table 1: related work: render engine, procedural?, use OSM/Sat?, Video Game Map?, online learning?, Open Source engine+framework?
 - [ ] Table 2: intro theme question, justification, literary reference:
-   - why procedurally generated for machine learning? (variation, endless combinations, etc)
    - how what is a realistic image?
-   - what classes of types imagery are needed? what classes for semantic segmentations are needed?
+   - why procedurally generated for machine learning? (variation, endless combinations, etc)
+   - what classes of types of imagery are needed? what classes for semantic segmentations are needed?
    - why open source technology and user-customizations are needed?
    - why is on-line learning needed instead of offline learning from dataset
    - what is domain transfer and why it's a problem 
