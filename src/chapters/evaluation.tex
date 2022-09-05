@@ -1,14 +1,58 @@
 \chapter{Testing and Evaluation}
 \label{chapter:testing-and-evaluation}
 
+\section{Validating Generated Video using a Machine Learning Model}
+\label{sec:evaluate-ml}
+
+
+\begin{figure}
+\begin{tabular}{ccccc}
+  Frame & Ground Truth & Evaluation & Class & IoU \\ \hline
+  \includegraphics[width=30mm]{src/img/results-ml-0/par4/frame.jpg} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par4/seg.jpeg} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par4/det.png} &
+  rail-to-rail & TODO \\
+  \multicolumn{5}{l}{(a) Training Dataset (Dash Cam) } \\ \hline
+  
+  \includegraphics[width=30mm]{src/img/results-ml-0/par3/frame.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par3/seg.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par3/det.png} &
+  rail-to-rail & TODO \\
+  \multicolumn{5}{l}{ (b) Validation Dataset (Drone Cam) } \\ \hline
+  
+  \includegraphics[width=30mm]{src/img/results-ml-0/par0/frame.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par0/seg.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par0/det.png} &
+  rails only & TODO \\
+  \multicolumn{5}{l}{ (c) Initial Attempt } \\ \hline
+  
+  \includegraphics[width=30mm]{src/img/results-ml-0/par1/frame.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par1/seg.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par1/det.png} &
+  rails only & TODO \\
+  \multicolumn{5}{l}{   (d) Improved Rail Track Materials } \\ \hline
+  
+  \includegraphics[width=30mm]{src/img/results-ml-0/par2/frame.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par2/seg.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par2/det.png} &
+  rails only & TODO \\
+  \multicolumn{5}{l}{  (e) Adjusted Camera Angle, Added Clouds  } \\ \hline
+  
+  \includegraphics[width=30mm]{src/img/results-ml-0/par5/frame.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par5/seg.png} & 
+  \includegraphics[width=30mm]{src/img/results-ml-0/par5/det.jpeg} &
+  rail-to-rail & TODO \\
+  \multicolumn{5}{l}{  (f) Final Result  } \\
+  
+\end{tabular}
+\caption{Evaluating the "unet" Machine Learning Model on Filmed and Synthetic Frames}
+\label{fig:ml-pics}
+
+\end{figure}
+
+\section{Evaluating Run Time and Data Size}
+\label{sec:evaluate-runtime}
 
 
 \section{Testing Various Geographical Locations}
-
-
-
-\section{Evaluating Run Time and Data Size}
-
-
-
-\section{Validating Generated Video using a Machine Learning Model}
+\label{sec:test-locations}

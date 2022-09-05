@@ -61,8 +61,22 @@
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
-% Code listings support
+% Code listings support%\usepackage{listings}
+\usepackage[svgnames]{xcolor}
+  \definecolor{diffstart}{named}{Grey}
+  \definecolor{diffincl}{named}{Green}
+  \definecolor{diffrem}{named}{OrangeRed}
+  \definecolor{diffmmm}{named}{Red}
+  \definecolor{diffppp}{named}{DarkGreen}
 \usepackage{listings}
+  \lstdefinelanguage{diff}{
+    basicstyle=\ttfamily\small,
+    morecomment=[f][\color{diffstart}]{@@},
+    morecomment=[f][\color{diffincl}]{+\ },
+    morecomment=[f][\color{diffrem}]{-\ },
+    morecomment=[f][\color{diffppp}]{+++\ },
+    morecomment=[f][\color{diffmmm}]{---\ },
+  }
 
 \lstset{
 	numbers=left, numberstyle=\footnotesize,
@@ -70,6 +84,8 @@
 	breaklines=true,
 	basicstyle=\ttfamily
 }
+
+\usepackage{wrapfig}
 
 % notations and abbreviations
 % http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/nomencl.pdf
