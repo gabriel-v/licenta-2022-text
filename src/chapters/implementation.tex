@@ -64,19 +64,19 @@ After the plugin is installed into Blender, it can be used to manually download 
 \begin{figure}[H]
 \begin{tabular}{ccc}
 
-\includegraphics[width=43mm]{src/img/manual-download/1-get-basemap.png} &
-\includegraphics[width=43mm]{src/img/manual-download/2-choose-sat.png} &
-\includegraphics[width=43mm]{src/img/manual-download/3-choose-gps-zoom.png} \\
+\includegraphics[width=43mm]{src/img/manual-download/1-get-basemap.jpg} &
+\includegraphics[width=43mm]{src/img/manual-download/2-choose-sat.jpg} &
+\includegraphics[width=43mm]{src/img/manual-download/3-choose-gps-zoom.jpg} \\
   (a) Open Base Map Form &  
   (b) Choose Satellite Provider &   
   (c) Choose Location and Zoom \\
-  \includegraphics[width=43mm]{src/img/manual-download/4-get-alt.png} &
-  \includegraphics[width=43mm]{src/img/manual-download/5-get-osm.png} &
-  \includegraphics[width=43mm]{src/img/manual-download/6-osm-settings.png} \\
+  \includegraphics[width=43mm]{src/img/manual-download/4-get-alt.jpg} &
+  \includegraphics[width=43mm]{src/img/manual-download/5-get-osm.jpg} &
+  \includegraphics[width=43mm]{src/img/manual-download/6-osm-settings.jpg} \\
   (d) Obtain Altitude Data &   
   (e) Open OSM Form &          
   (f) Choose OSM Data \\
-  \multicolumn{3}{c}{ \includegraphics[width=130mm]{src/img/manual-download/7-end-result.png} }  \\ 
+  \multicolumn{3}{c}{ \includegraphics[width=130mm]{src/img/manual-download/7-end-result.jpg} }  \\ 
   \multicolumn{3}{c}{ (g) Save End Result }
  
 \end{tabular}
@@ -108,7 +108,7 @@ The plugin code can then be called from a Blender Operator to ensure its correct
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=14.5cm]{src/img/pic/pic-1 blender screenshot sat levels of detail.png}
+    \includegraphics[width=14.5cm]{src/img/pic/pic-1 blender screenshot sat levels of detail.jpg}
     \caption{Different Levels of Detail }
     \label{fig:impl-levels-of-detail}
 \end{figure}
@@ -121,7 +121,7 @@ Finally, this step ensures adequate tessellation of the ground object. More deta
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=14.5cm]{src/img/pic/pic-2 screenshot of blender adjust terrain geometry node.png}
+    \includegraphics[width=14.5cm]{src/img/pic/pic-2 screenshot of blender adjust terrain geometry node.jpg}
     \caption{Geometry Node Implementation for Terrain Height Adjustment and Tessellation}
     \label{fig:impl-geom-nodes-terrain}
 \end{figure}
@@ -133,7 +133,7 @@ The procedural graphics designer can reuse any "Node Groups" as a part of a larg
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=14.5cm]{src/img/pic/pic-3 blender geometry screenshot curve_distance.png}
+    \includegraphics[width=14.5cm]{src/img/pic/pic-3 blender geometry screenshot curve_distance.jpg}
     \caption{Geometry Node Implementation for Computing Distance to Curves}
     \label{fig:impl-curve-dist}
 \end{figure}
@@ -142,7 +142,7 @@ During this stage, additional "Geometry Node Groups" are used to create volumes 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=14.5cm]{src/img/pic/pic-4 blender geometry node screenshot adjust_z_to_match_pos.png}
+    \includegraphics[width=14.5cm]{src/img/pic/pic-4 blender geometry node screenshot adjust_z_to_match_pos.jpg}
     \caption{Geometry Node Implementation for Adjusting Geometry Height}
     \label{fig:impl-adjust-z-to-match-pos}
 \end{figure}
@@ -157,14 +157,14 @@ After the ground objects are flattened, adjusted and the different levels of det
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.95\textwidth]{src/img/procedural-tracks/3b-rails-result.png}
+    \includegraphics[width=.95\textwidth]{src/img/procedural-tracks/3b-rails-result.jpg}
     \caption{Rail Tracks - Final Result}
     \label{fig:track-final-result}
 \end{figure}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/1-trackbed.png}
+    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/1-trackbed.jpg}
     \caption{Track Ballast}
     \label{fig:track-ballast-pic}
 \end{wrapfigure}
@@ -176,7 +176,7 @@ First, the ground material immediately around the track is changed into a rock-l
 
 \begin{wrapfigure}{r}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/3a-rails-curve-to-mesh.png}
+    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/3a-rails-curve-to-mesh.jpg}
     \caption{"Curve to Mesh" Geometry Primitive}
     \label{fig:track-curve-to-mesh-primitive}
 \end{wrapfigure}
@@ -193,7 +193,7 @@ To aid in creating the "rail-to-rail" segmentation mask used in the machine lear
 
 \begin{wrapfigure}{r}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/2c-planks-curve-to-points.png}
+    \includegraphics[width=0.28\textwidth]{src/img/procedural-tracks/2c-planks-curve-to-points.jpg}
      \caption{"Curve to Points" Geometry Primitive}
      \label{fig:curve-to-points}
 \end{wrapfigure}
@@ -203,19 +203,19 @@ The wooden railroad ties (traverse planks) are similarly generated using only th
 \begin{figure}[!htb]
    \begin{minipage}{0.3\textwidth}
      \centering
-     \includegraphics[width=.97\linewidth]{src/img/procedural-tracks/3c-matte-view.png}
+     \includegraphics[width=.97\linewidth]{src/img/procedural-tracks/3c-matte-view.jpg}
      \caption{Transparent Segmentation Placeholder Volume}
      \label{fig:track-transparent-segmentation-placeholder}
    \end{minipage}\hfill
    \begin{minipage}{0.3\textwidth}
      \centering
-     \includegraphics[width=\linewidth]{src/img/procedural-tracks/2b-planks-far.png}
+     \includegraphics[width=\linewidth]{src/img/procedural-tracks/2b-planks-far.jpg}
      \caption{Railroad Ties in Far Configuration}
      \label{fig:wood-far}
    \end{minipage}\hfill
    \begin{minipage}{0.3\textwidth}
      \centering
-     \includegraphics[width=.97\linewidth]{src/img/procedural-tracks/2a-planks-bolts-close.png}
+     \includegraphics[width=.97\linewidth]{src/img/procedural-tracks/2a-planks-bolts-close.jpg}
      \caption{Railroad Ties in Close Configuration}
      \label{fig:wood-close}
    \end{minipage}
@@ -248,7 +248,7 @@ TODO blender distance vertex group screenshot
 
 Even through the Blender Geometry Nodes can be used as a functional, unidirectional data flow, it has no support for result caching. This means all Geometry Node logic must execute at every frame of the simulation, which greatly impacts the simulation frame rate. To work around this limitation, we store results of expensive computations in temporary objects, by "applying" the Geometry Nodes Modifier in Blender. This technique is used for vegetation scatter, as distributing tens of thousands of points to anchor vegetation elements is an expensive procedure.
 
-A second Geometry Nodes Group is used to randomly generate points that respect the minimum distance to features. These points are stored in temporary objects, to avoid expensive re-computation at every frame of the render. These temporary objects also store a number of randomly generated attributes alongside the position, such as scale, rotation, and instanced object index. The stored object must be of the "Mesh" Geometry type, as any other type is not saved when the Geometry Node is applied.
+A second Geometry Nodes Group is used to randomly generate points that respect the minimum distance to features. These points are stored in temporary objects, to avoid expensive re-computation at every frame of the render. At instantiation time, additional random parameters are required, such as rotation, scale and instance to be picked. These extra parameters are obtained by sampling a deterministic random noise texture with the point location. Different settings for textures are used for different parameters.
 
 Finally, the points are instantiated into randomly selected objects of each vegetation type. The models for the vegetation objects are taken from the 3D model library.
 
