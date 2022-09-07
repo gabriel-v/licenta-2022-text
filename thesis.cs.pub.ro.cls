@@ -29,6 +29,9 @@
 \setlength{\headheight}{1.20cm}
 \setlength{\headsep}{0.50cm}
 
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforechapskip}{3pt}
+
 \usepackage{parskip}
 \usepackage{float}
 % package for variable line spacing (1, 1.5, 2)
@@ -174,6 +177,8 @@
 \newenvironment{frontmatter}{\pagenumbering{roman}}{\newpage \pagenumbering{arabic}}
 
 \renewenvironment{abstract}{\null\vfil\prefacesection{Abstract}}{\par\vfill\null}
+
+\newenvironment{abstract-ro}{\null\vfil\prefacesection{Sinopsis}}{\par\vfill\null}
 
 \def\prefacesection#1{%
 	\chapter*{#1}

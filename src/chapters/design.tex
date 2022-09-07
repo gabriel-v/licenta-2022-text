@@ -7,21 +7,8 @@ The Procedural Outdoors Scene Generator is a Python framework that enables resea
 
 To generate data, the user of the framework chooses a geographical area to be rendered, defines the procedural graphics primitives to be used on the raw geographic data, and implements the logic of the simulation. The procedural graphics primitives can be re-used and shared as individual assets, alongside the Python code that controls the simulation.
 
-% ###############################################################
-\section{Design Requirements}
-\label{sec:design-requirements}
 
-
-\begin{description}
-    \item[Makes use of GIS data.] Publicly available Geographic Information Systems (GIS) distribute a variety of data, such as satellite imagery, altitude maps, and data on streets, highways, railroads, buildings and urban zoning areas. The framework includes a method to access and combine multiple data sources into a single 3D environment object containing the raw data for generating a scene.
-    \item[Capable of procedural 3D modeling.] Specialized 3D artists can create and modify procedurally generated 3D assets, including their textures and shaders, independently of the research team which implements the simulation logic in Python. Procedural 3D modeling can also be used to create variations of existing static 3D objects and their texture and shader information.
-    \item[Open.]  The framework must be based on open-source code, and enable the sharing, distribution and modification of both user code and procedurally generated 3D objects. The framework is based on the Kubric library, which uses the Blender 3D computer graphics software as  the rendering backend. Both these components are free and open-source, which makes it possible to analyze and modify any component, including the rendering engine.
-    \item[Portable and Scalable.]  All components of the framework are easily deployable on cloud hardware. Rendering tasks can be parallelized by running multiple instances of the same parameter settings.
-    \item[Interactive Rendering.] The framework must support tasks in which the machine learning algorithm needs to effect changes in the scene. An example of this would be an online reinforcement learning model learning to guide a drone over rail tracks: at each frame, the training algorithm decides of a movement, and the simulation must update its scene based on that movement.
-\end{description}
-
-
-\begin{figure}[ht!]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=14cm]{src/img/fig/fig-1-overview-v2.drawio-1.pdf}
     \caption{Data Flow Diagram}
@@ -70,7 +57,7 @@ The parallelograms in Figure \ref{fig:design-scene-generation} represent user-cu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=14.5cm]{src/img/fig/fig-3 environment scene generation.drawio.pdf}
+    \includegraphics[width=14cm]{src/img/fig/fig-3 environment scene generation.drawio.pdf}
     \caption{Scene Generation}
     \label{fig:design-scene-generation}
 \end{figure}
