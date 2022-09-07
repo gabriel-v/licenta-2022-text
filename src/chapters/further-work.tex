@@ -1,32 +1,122 @@
 \chapter{Further Work}
 \label{chapter:further-work}
 
-% ###############################################################
-\section{Blender Geometry Nodes Data Caching}
-\label{sec:future-blender-geom-nodes-data-caching}
 
-As mentioned in section TODO REF SECTION, Blender does not support caching data for Geometry Nodes between different frames.
+This section outlines recommendations for continuing the project. We describe plans for implementing more procedurally generated environment models, as well as a blueprint for an open web collaboration platform, where procedurally generated graphics - both geometry primitives and procedural textures - can be shared under a permissive license.  Finally, we outline a one-year action plan with estimated budget and human resource requirements.
 
 % ###############################################################
-\section{Procedural Generation of 3D Prop Objects}
+\section{Free Library of Procedurally Generated 3D Assets}
 \label{sec:future-proc-gen-obj}
 
-\subsection{Tree and Foliage Generation}
+Procedural generation can be used to create virtually endless variations of the same base objects, which helps machine learning models be more robust in real-world situations. This project only designed the train tracks in this way, and such was only useful for detecting that specific object class.
 
-TODO mention blender procedural tree plugin
+We propose combining various techniques listed in this section to make most relevant classes for machine learning available in procedurally generated designs in a public, free library. This would enable machine learning researchers to easily put together realistic simulations for their synthetic data needs.
 
-\subsection{Rock and Ground Feature Generation}
+The related work in Chapter \ref{chapter:related}, Section \ref{sec:procedurally-generated} can be translated to the Blender Geometry Node environment. Where this is not directly possible, we propose the creation of Blender Plugins to implement novel functionality in Python. These plugins would have the ability to execute arbitrary code.
 
-TODO mention some papers
+We propose building a comprehensive procedural geometry library with the following elements:
+\begin{description}
+  \item[Vegetation.] Trees\cite{hewitt2017proceduralTrees} and plants\cite{barth2018data} can be procedurally generated. The "Sapling Add-on"\footnote{\url{https://docs.blender.org/manual/en/latest/addons/add_curve/sapling.html}}, included in Blender, can also be used. Geographical biome is to be queried from GIS, to select a specific ecosystem from which procedural models are chosen. Seasonal effects on vegetation can also be modeled.
+  \item[Ground Features.] procedural textures for asphalt, gravel. Procedurally generated stones.
+  \item[Weather.] Base weather on real-world data, similar to "Microsoft Flight Simulator 2020"\footnote{\url{https://www.pcgamer.com/heres-how-microsoft-flight-simulator-creates-its-realistic-weather/}}. 
+  \item[Buildings.] Different building volumes and faces for urban, rural and industrial zones.
+  \item[Humans.] Physical appearance, clothes and actions can all be synthetically generated using different methods.
+  \item[Traffic.] Road, pedestrian, and rail traffic should all be modeled in the simulation.
+\end{description}
 
-\subsection{Building Generation}
-
-TODO mention some techniques and papers
+A collective effort to provide openly licensed assets for the above purposes will require specialized software where contributors can access, modify and share assets under permissive licenses. This web collaboration platform is discussed in the next section.
 
 % ###############################################################
 \section{Open Web Collaboration Platform}
 \label{sec:future-open-web-collaboration-platform}
 
+To aid the building of a free, public and comprehensive graphics library, we propose implementing a specialized web collaboration platform where contributors can preview, access, modify and share specific assets.
+
+User friction is to be eliminated through the use of a Blender Plugin to communicate with the web service, to ensure individual assets found on the platform are transferred to the local Blender client through a single click. The designer can then modify the asset, and re-upload it as a new asset.
+
+The web platform would have the following features:
+\begin{description}
+  \item[3D Tile Cache.] Downloading OSM, SRTM and Satellite data is very time-consuming, with larger tiles taking upwards of 15 minutes to obtain. The maintainer of the web platform should handle the delivery of pre-processed 3D tiles.
+  \item[3D Model Hosting.] Models uploaded on the Internet with permissive licenses are to be re-uploaded on the platform, to be a part of the free library. They can also be modified to use procedurally-generated textures, to increase their variance. For example, car models could have their paint material changed, or dirtied by mud. 
+  \item[Geometry Primitive Hosting.] We propose using the technique from Section \ref{sec:save-restore-blender-geometry} to create a public library of Geometry Node Groups. These would range from small building blocks, such as the "View Culling" Node Group from Figure \ref{fig:veg-culling}, up to entire objects, such as the "rail tracks" Node Group which creates entire railway lines.
+  \item[Scene Setup and Logic Hosting.] Entire code bases that use the 3D models and geometry primitives mentioned above would be shared on the platform. Machine learning researchers can then browse through the public catalog and select a starting point for their synthetic data generation project.
+\end{description}
+
+
+Since this web platform must host and execute arbitrary code as either \textbf{Scene Setup and Logic} or \textbf{Geometry Primitives}, a comprehensive security team must monitor assets and implement safe execution environments where user code can run. Additionally, since its public nature, this library would need a moderation team to keep the community safe. The costs of these teams, and all the other resources required to implement this collaboration platform, are outlined in the next section.
+
 % ###############################################################
 \section{One Year Action Plan}
 \label{sec:future-one-year-action-plan}
+
+In the previous sections, we have presented a plan to create a public library for procedurally generated 3D assets and scenes, that would be used alongside the framework implemented in Chapter \ref{chapter:implementation}. In this section, we estimate the human resources and financial costs needed to implement this plan.
+
+Foremost, a core team of engineers will develop the web platform. This team would be comprised of backend and front-end engineers, a security specialist and system administrator.
+
+Secondly, procedural 3D artists are needed to build more of the world for demonstration purposes, to start producing video scenes of a more broad scope. This base content will be needed to start a community around the free asset library, and to initiate the network effect of using the platform.
+
+Additional experts are given medium-term contracts to implement interoperability between Blender, the web platform, and existing machine learning tooling. This includes Reinforcement Learning (RL) libraries, rendering infrastructure, and other miscellaneous software components.
+
+Lastly, the task of community building requires two human aspects: outreach, and moderation. The outreach aspect is necessary to make the project be known and trusted, so the asset library eventually starts being contributed to by members of the public, free of charge. A well-placed social media campaign or high school outreach program could help the younger generation transition from developing "Roblox games"\footnote{\url{https://www.businessinsider.com/roblox-direct-listing-young-game-developers-2021-3}} to professional 3D artist careers. The moderation element is required to ensure trust in the platform is kept, by removing copyrighted or otherwise illegal content.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3.6cm}|p{1.8cm}|p{3.6cm}|p{1.6cm}|p{1.6cm}|}
+\hline
+Issue & Person & Resource & Time Frame & Cost \\ \hline\hline
+\multirow{4}{*}{\parbox[c]{2.6cm}{\centering Web Platform Implementation}} & 
+Python \mbox{engineer} & 
+Backend Implementation & 
+long & RON 130,000 \\ \cline{2-5}
+
+  & 
+JavaScript engineer & 
+UI Design and Implementation &
+long & RON 110,000 \\\cline{2-5}
+
+  & 
+Linux \mbox{security} specialist &
+Isolated Execution Environment, Security Audit &
+short & RON 30,000 \\\cline{2-5}
+
+ & 
+Sysadmin &
+Hardware acquisition, deployment and maintenance &
+long & RON 100,000 \\\hline
+
+Base Asset Library & 
+Procedural 3D Artist &
+Freely-licensed \mbox{procedural} models & 
+long & RON 75,000 \\\hline
+
+Interactivity between Blender and Web Platform  & 
+Python Blender engineer & 
+Blender Plugins & 
+medium & RON 75,000 \\\hline
+
+Interactivity between Scene Generator and ML tools &
+ML  \mbox{specialist} & 
+ML tooling and \mbox{integrations} & 
+medium & RON 70,000 \\\hline
+
+Community building  & 
+Marketing specialist & 
+Articles, ads and social media posts &
+short & RON 17,000 \\\hline
+
+Copyrighted or illegal content  & 
+Moderator &
+Community safety &
+long &  RON 65,000  \\\hline
+
+\end{tabular}
+\caption{One Year Action Plan}
+\label{fig:one-year-action-plan}
+\end{table}
+
+
+Table \ref{fig:one-year-action-plan} breaks down the costs mentioned in this section. The average yearly net salary values for Romania have been obtained from the Economic Research Institute \footnote{\url{https://www.erieri.com/}} web page in September 2022. The "Time Frame" column represents the total work period for the full-time member, more exactly 3 months for a "short" time frame, 6 months for "medium" and the entire year for "long".
+
+By taking the current year-on-year inflation in Romania of about 15\% \footnote{\url{https://tradingeconomics.com/romania/inflation-cpi}} and projecting it into the future, then adding yearly hardware rental costs of RON 30,000 and finally doubling the resulting budget for safe measure, we arrive at a total estimate cost of RON 15,000,000, or about 300,000 Euro, for one year of development. We note that this budget is small when compared to the average multi-million-Euro budget that realistic video games mentioned in Section \ref{sec:video-games} are known to have\footnote{\url{https://www.ibtimes.com/gta-5-costs-265-million-develop-market-making-it-most-expensive-video-game-ever-produced-report}}.
+

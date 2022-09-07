@@ -2,7 +2,7 @@
 \label{chapter:implementation}
 
 
-This chapter describes implementing the framework, as well as its first scene: an outdoors rail track segmentation task. The Dash Cam TODO REF and Drone Cam TODO OREF video datasets are used as inspiration for designing details in the rail tracks and backgrounds, as seen in Figure \ref{fig:ml-pics}. The use of the generator together with a Machine Learning Model is discussed in the next chapter, Section \ref{sec:evaluate-ml}.
+This chapter describes implementing the framework, as well as its first scene: an outdoors rail track segmentation task. The RailSem19 dataset with dashcam video from trains\cite{zendel2019railsem19} is used as inspiration for designing details in the rail tracks and backgrounds, as seen in Figure \ref{fig:ml-pics}. The use of the generator together with a Machine Learning Model is discussed in the next chapter, Section \ref{sec:evaluate-ml}.
 
 The 3D objects that the segmentation task is focused on, in this case the rail tracks and immediate area, are created using procedurally generated graphics. This ensures a great degree of variation and customization for the same object: one can randomize physical properties of each component of the object, such as changing the shape or material of the railroad ties, or randomly skipping missing planks or changing their distance. 
 
@@ -17,8 +17,8 @@ The "Geometry Nodes" feature was added in Blender 2.92\footnote{\url{https://wik
 
 The upgrade process begins with simple changes: the Python language version was upgraded to 3.10, so the base operating system for the image is increased to a newer version that packages it. Then, the Blender version is switched as mentioned above. These changes are outlined in Listing \ref{fig:idocker-build-diff}.
 
-\begin{figure}[H]
-\begin{lstlisting}[language=diff]
+
+\begin{lstlisting}[language=diff,caption={Start of the Blender Version Upgrade},label={fig:idocker-build-diff}]
 --- a/docker/Blender.Dockerfile
 +++ b/docker/Blender.Dockerfile
 @@ -13,7 +13,7 @@
@@ -29,9 +29,7 @@ The upgrade process begins with simple changes: the Python language version was 
 - RUN git clone https://github.com/blender/blender.git --branch blender-v2.93-release --depth 1
 + RUN git clone https://github.com/blender/blender.git --branch blender-v3.2-release --depth 1 blender
 \end{lstlisting}
-\caption{Start of the Blender Version Upgrade }
-\label{fig:idocker-build-diff}
-\end{figure}
+
 
 Following the changes in Listing \ref{fig:idocker-build-diff}, more adjustments are required for the build process, namely to installed operating system packages, code directories and Python package version numbers. After the build succeeds, more issues follow: Blender function names have changed, and some default behavior has also changed. In total, about 400 lines of code have been added to the Kubric Library to support the new version.
 
@@ -44,14 +42,15 @@ The Docker Build process can also be used for other purposes, such as installing
 
 In the previous section of this chapter, we discussed how the "Geometry Nodes" feature in Blender is new and actively developed. This means some operations cannot be yet achieved in a straight-forward fashion. This includes saving, restoring and transferring Geometry Nodes between Blender scenes.
 
-In Blender 3.2 there is no direct way to import Geometry Node objects from another Blender project. However, imported Blender objects will keep all their linked Geometry Nodes objects, and all the Materials and Node Groups that are recursively linked by the first-order objects. This feature can be exploited to save and restore "Geomtry Node Groups", the building blocks of this system, by using a dummy object to store the geometry.
+In Blender 3.2 there is no direct way to import or export "Geometry Node Groups" from another Blender project. However, imported Blender objects will keep all their linked Geometry Nodes objects, and all the Materials and Node Groups that are recursively linked by the first-order objects. This feature can be exploited to save and restore Geometry Node Groups, the building blocks of this system, by using a dummy object to store the geometry.
 
-TODO code extract for save/restore geometry
+The solution for overcoming this limitation when exporting consists of two consecutive steps, as shown in Listing \ref{fig:appendix-export-main-geometry-nodes}. First, a dummy object is created in the scene, and all Geometry Node Groups present in the system are chained together on it. All the objects in the scene, apart from the dummy object, are removed. The resulting scene is saved in a temporary file, see Listing \ref{fig:appendix-export-first-step-geometry-nodes}.
 
-This logic is used in the project for incremental "Geometry Node Group" development: the user can open the Blender Geometry Node editor, make changes, save the file, and re-run the save/restore script to use the new version in the scene generation in the full scene.
+We find that the resulted scene file has additional objects in it. This is because Blender uses reference counting for all objects, which means simply deleting an object referenced elsewhere does not release it from the scene. The additional objects in question have been referenced by the Geometry Nodes themselves, as input arguments to "Object" type parameters. In a second step, we initiate an empty Blender scene in a separate Python process, and import only the dummy object from the temporary file. This removes all "Object" type parameters from the Geometry Nodes, and removes the additional Blender objects from the scene. The result is saved as the Geometry Node library on disk. This second step is shown in Listing \ref{fig:appendix-export-second-step-geometry-nodes}.
 
-TODO simple diagram with edit-save-restore-recreate loop
+Importing a Geometry Node library is trivial: the dummy object is imported, and hidden from rendering or editing interface (Listing \ref{fig:appendix-import-geometry-nodes}).
 
+This logic is used in the project for incremental "Geometry Node Group" development: the user can open the Blender Geometry Node editor, make changes to Geometry Nodes in-place, save the file, and re-run the save/restore script to use the new version in the scene generation in the full scene.
 
 % ###############################################################
 \section{Downloading Geographic Data}
@@ -59,36 +58,13 @@ TODO simple diagram with edit-save-restore-recreate loop
 
 As stated in the previous chapter, the first stage of the pipeline is concerned with collecting all geographic data required for a 3D scene at a chosen geographic location. To aid in accessing public data from GIS services, we use the freely available BlenderGIS Plugin \footnote{\url{https://github.com/domlysz/BlenderGIS}}.
 
-After the plugin is installed into Blender, it can be used to manually download all required data using the provided User Interface. An example of the manual download flow is available in Figure \ref{fig:manual-download-geo}.
-
-\begin{figure}[H]
-\begin{tabular}{ccc}
-
-\includegraphics[width=43mm]{src/img/manual-download/1-get-basemap.jpg} &
-\includegraphics[width=43mm]{src/img/manual-download/2-choose-sat.jpg} &
-\includegraphics[width=43mm]{src/img/manual-download/3-choose-gps-zoom.jpg} \\
-  (a) Open Base Map Form &  
-  (b) Choose Satellite Provider &   
-  (c) Choose Location and Zoom \\
-  \includegraphics[width=43mm]{src/img/manual-download/4-get-alt.jpg} &
-  \includegraphics[width=43mm]{src/img/manual-download/5-get-osm.jpg} &
-  \includegraphics[width=43mm]{src/img/manual-download/6-osm-settings.jpg} \\
-  (d) Obtain Altitude Data &   
-  (e) Open OSM Form &          
-  (f) Choose OSM Data \\
-  \multicolumn{3}{c}{ \includegraphics[width=130mm]{src/img/manual-download/7-end-result.jpg} }  \\ 
-  \multicolumn{3}{c}{ (g) Save End Result }
- 
-\end{tabular}
-\caption{Manual Process for Downloading Geographical Data}
-\label{fig:manual-download-geo}
-\end{figure}
+After the plugin is installed into Blender, it can be used to manually download all required data using the provided User Interface. An example of the manual download flow is available in the Appendix, Figure \ref{fig:manual-download-geo}.
 
 
 The plugin is also installed in the Docker image at the standard location \texttt{scripts/addons} inside the Blender installation directory. Then, some Python code is executed at module load time to load it and configure its settings. In the example in Listing \ref{fig:blender-plugin}, we show loading and configuring the plugin with the required keys to access the data.
 
-\begin{figure}[H]
-\begin{lstlisting}[language=python]
+
+\begin{lstlisting}[language=python,label={fig:blender-plugin},caption={Activating and Configuring a Blender Plugin}]
 def load_gis_addon():                                   
     bpy.ops.preferences.addon_enable(module='BlenderGIS')
     api_key = os.getenv('SRTM_API_KEY')
@@ -96,9 +72,7 @@ def load_gis_addon():
         bpy.context.preferences.addons['BlenderGIS'].preferences.demServer += f"&API_Key={api_key}"
     bpy.ops.wm.save_userpref() 
 \end{lstlisting}
-\caption{Activating and Configuring a Blender Plugin}
-\label{fig:blender-plugin}
-\end{figure}
+
 
 The plugin code can then be called from a Blender Operator to ensure its correct execution context, as described by the project maintainer \footnote{\url{https://github.com/domlysz/BlenderGIS/issues/430}}. However, the steps for automating this feature were not implemented in this project, and all data used for this work have been obtained manually through the process in Figure \ref{fig:manual-download-geo}.
 
@@ -301,8 +275,8 @@ Then, some custom frame setup logic is applied: user logic affects camera positi
 
 The user-facing API (application programming interface) only contains three methods: a scene generation entry point, where the user generates the static background; a scene initialization method, to configure the initial parameters before rendering starts; and finally a frame callback that gets run on every frame. All these functions can access any Kubric or Blender internals, to reduce programmer friction. Listing \ref{fig:api-scene-generation} shows the interface, which in Python is called Abstract Base Class (ABC).
 
-\begin{figure}[H]
-\begin{lstlisting}[language=python]
+
+\begin{lstlisting}[language=python,caption={Scene Generation API},label={fig:api-scene-generation}]
 from abc import ABC, abstractmethod
 class SceneGeneratorInterface(ABC):
     @abstractmethod
@@ -317,11 +291,9 @@ class SceneGeneratorInterface(ABC):
     def frame_callback(self, scene, render_data=None):
         pass
 \end{lstlisting}
-\caption{Scene Generation API}
-\label{fig:api-scene-generation}
-\end{figure}
 
-The demonstration rail track scene makes use of a relatively simple camera logic: the camera follows the track at a constant speed. From the multiple available rail track paths, we filter out the points too far to be used in the scene. The remaining points are checked for the longest continuous section with consecutive indexes. The camera then follows that longest path. Since the track points are not at a constant distance to each other, the camera path itself needs to be resampled, so the camera moves along interpolated points.
+
+The demonstration rail track scene makes use of a relatively simple camera setup logic: the camera follows the track at a constant speed. From the multiple available rail track paths, we filter out the points too far to be used in the scene. The remaining points are checked for the longest continuous section with consecutive indexes. The camera then follows that longest path. Since the track points are not at a constant distance to each other, the path needs to be resampled, so the camera moves along the interpolated points at a constant rate. An excerpt of the track picking and path interpolation code is shown in Appendix Listing \ref{fig:camera-path-interpolation}.
 
 Two implementations for the interface in Listing \ref{fig:api-scene-generation} exist: one generates a smooth video with a constantly moving camera, and slowly varying  one parameter at a time, meant for presentation video generation; and the other one randomizes all parameters on every frame, and is meant for machine learning dataset generation.
 

@@ -82,7 +82,7 @@
 	numbers=left, numberstyle=\footnotesize,
 	frame=lines, captionpos=b,
 	breaklines=true,
-	basicstyle=\ttfamily
+	basicstyle=\ttfamily\small
 }
 
 \usepackage{wrapfig}

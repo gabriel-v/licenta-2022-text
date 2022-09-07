@@ -1,2 +1,8 @@
 \chapter{Introduction}
 \label{chapter:intro}
+
+Deep learning requires vast amounts of high quality data\cite{korakakis2018short}. Obtaining quality annotations from real-world data is a high-cost endeavor, and presents issues with data diversity and licensing\cite{asano2021pass}. To overcome these limitations, we advocate the use of synthetic data for deep learning vision tasks.
+
+To this end, we combined data from open access GIS (Geographic Information System) services with procedural modeling techniques, to develop The Procedural Outdoors Scene Generator\footnote{\url{https://github.com/gabriel-v/the_procedural_outdoors}}, an open-source Python framework aimed at generating realistic synthetic video data of outdoor environments. We used this system to create a realistic scene with rail tracks, together with per-pixel annotation data. The resulting datasets are evaluated for usefulness in training a machine learning model for semantic segmentation of the tracks.
+
+We discuss design requirements in Chapter \ref{chapter:approach}, implementation details in Chapter \ref{chapter:implementation}, and evaluate the benefits of using data generated from this system for a specific machine learning segmentation task in Chapter \ref{chapter:testing-and-evaluation}. Finally, a long-term plan is made in Chapter \ref{chapter:further-work} to extend the framework into a comprehensive ecosystem of freely licensed procedurally generated assets and scenes.

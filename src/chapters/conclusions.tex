@@ -1,8 +1,16 @@
 \chapter{Conclusions}
 \label{chapter:Conclusions}
 
-
 \section{Summary}
 
+We introduce The Procedural Outdoors Scene Generator, an open-source Python framework aimed at generating realistic synthetic video data of outdoor environments. The framework integrates data from various GIS services (satellite imagery, altitude maps, and OpenStreetMap) with a custom library of procedural graphics primitives and freely available 3D models.
+
+The project explores novel procedural modeling techniques and addresses a number of problems present with the "Geometry Nodes" programming environment in Blender, including the import and export of "Geometry Node Groups" from Blender scenes, and the caching of intermediate data between different applications of procedural modeling primitives.
 
 \section{Results}
+
+We demonstrate the suitability of our framework in generating synthetic datasets for machine learning tasks by evaluating the benefits of using generated data in a machine learning segmentation task. This results in two publicly shared image datasets of rail tracks, annotated with semantic segmentation masks for the rail track.
+
+We show that the addition of a relatively small number of synthetic images to a machine learning model's training dataset improves its IoU score for the rail track segmentation task by \textbf{0.1\%}. Finally, we evaluate the scene generator's performance in terms of run time, memory use and output data quantity.
+
+We include a discussion of the future of the project in Chapter \ref{chapter:further-work}, where we envision the creation of a free library of procedural 3D assets, alongside a web platform meant to facilitate open collaboration.
